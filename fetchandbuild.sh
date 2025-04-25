@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir -p ~/chromiumos
 cd ~/chromiumos
 repo init -u https://chromium.googlesource.com/chromiumos/manifest -b stable
