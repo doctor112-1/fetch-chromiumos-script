@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt update && sudo apt upgrade -y
 sudo add-apt-repository universe
 sudo apt-get install git gitk git-gui curl
