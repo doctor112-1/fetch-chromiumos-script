@@ -5,21 +5,13 @@ ubuntunumber=$(cut -f2 <<< "$ubuntuversion")
 pythonnumber=$(python3 --version | sed 's/Python //g')
 
 function setup() {
-	if [ $pythonnumber -gt 3.8 ]
+	if [ $pythonnumber -gt 3.8 ]; then
 		sudo apt update && sudo apt upgrade -y
 		sudo add-apt-repository universe
 		sudo apt-get install git gitk git-gui curl
 		cd ~ && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 		echo 'export PATH=/home/user/depot_tools:$PATH' >> ~/.bashrc
-		cd /tmp
-		cat > ./sudo_editor <<EOF
-		#!/bin/sh
-		[ "\$1" == "--" ] && shift                 # visudo might pass '--' arg
-		echo Defaults \!tty_tickets > \$1          # Entering your password in one shell affects all shells
-		echo Defaults timestamp_timeout=180 >> \$1 # Time between re-requesting your password, in minutes
-		EOF
-		chmod +x ./sudo_editor
-		sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
+		./tweak_sudoers.sh
 		sudo apt-get install locales
 		sudo echo "locales locales/default_environment_locale select en_US.UTF-8" | debconf-set-selections
 		sudo echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | debconf-set-selections
