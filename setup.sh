@@ -4,7 +4,7 @@ ubuntuversion=$(lsb_release -r)
 ubuntunumber=$(cut -f2 <<< "$ubuntuversion")
 pythonnumber=$(python3 --version | sed 's/Python //g')
 
-setup () {
+function setup() {
 	if [ $pythonnumber -gt 3.8 ]
 		sudo apt update && sudo apt upgrade -y
 		sudo add-apt-repository universe
@@ -35,9 +35,9 @@ setup () {
 	fi
 }
 
-if [ $number -eq 22.04 ]; then
+if [ "$number" -eq "22.04" ]; then
 	setup
-elif [ $number -eq 24.04 ]; then
+elif [ "$number" -eq "24.04" ]; then
 	echo "Warning: Version is not Ubuntu 22.04"
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
