@@ -5,7 +5,7 @@ ubuntunumber=$(cut -f2 <<< "$ubuntuversion")
 pythonnumber=$(python3 --version | sed 's/Python //g')
 
 function setup() {
-	if [ $pythonnumber -gt 3.8 ]; then
+	if awk 'BEGIN{exit ARGV[1]>ARGV[2]}' "$pythonnumber" "3.8"; then
 		sudo apt update && sudo apt upgrade -y
 		sudo add-apt-repository universe
 		sudo apt-get install git gitk git-gui curl
@@ -27,9 +27,9 @@ function setup() {
 	fi
 }
 
-if [ "$ubuntunumber" -eq "22.04" ]; then
+if (( $(echo "$ubuntunumber == 22.04" | bc -l) )); then
 	setup
-elif [ "$ubuntunumber" -eq "24.04" ]; then
+elif (( $(echo "$ubuntunumber == 24.04" | bc -l) )); then
 	echo "Warning: Version is not Ubuntu 22.04"
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
