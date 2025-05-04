@@ -23,4 +23,4 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 echo 'umask 022' >> ~/.bashrc
 echo "Finished install"
-echo "Make sure to run sudo dpkg-reconfigure locales and source ~/.bashrc and then run ./fetchandbuild.sh"
+echo "Run ./fetchandbuild.sh"
