@@ -27,9 +27,9 @@ function setup() {
 	fi
 }
 
-if [ "$number" -eq "22.04" ]; then
+if [ "$ubuntunumber" -eq "22.04" ]; then
 	setup
-elif [ "$number" -eq "24.04" ]; then
+elif [ "$ubuntunumber" -eq "24.04" ]; then
 	echo "Warning: Version is not Ubuntu 22.04"
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_unconfined=0
 	sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
