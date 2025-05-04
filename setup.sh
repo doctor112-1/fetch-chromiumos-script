@@ -15,6 +15,10 @@ EOF
 chmod +x ./sudo_editor
 sudo EDITOR=./sudo_editor visudo -f /etc/sudoers.d/relax_requirements
 sudo apt-get install locales
+sudo echo "locales locales/default_environment_locale select en_US.UTF-8" | debconf-set-selections
+sudo echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | debconf-set-selections
+sudo rm "/etc/locale.gen"
+sudo dpkg-reconfigure --frontend noninteractive locales
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 echo 'umask 022' >> ~/.bashrc
