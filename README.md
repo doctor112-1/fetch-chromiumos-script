@@ -2,7 +2,7 @@
 Scripts to setup, fetch and build ChromiumOS.
 
 ## How to use
-Run `chmod +x setup.sh fetchandbuild.sh`  
+Run `chmod +x setup.sh fetchandbuild.sh tweak_sudoers.sh`  
 Run  `./setup.sh`  
 Note: Make sure not to run it as root, the script will ask for sudo  
 Run `./fetchandbuild.sh`  
