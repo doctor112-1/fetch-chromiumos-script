@@ -2,11 +2,9 @@
 Scripts to setup, fetch and build ChromiumOS.
 
 ## How to use
-Run `chmod +x main.sh fetchandbuild.sh`  
-Run  `./main.sh`  
-Note: Make sure not to run it as root  
-Run `sudo dpkg-reconfigure locales` and chose en_US.UTF-8  
-Run `source ~/.bashrc`  
+Run `chmod +x setup.sh fetchandbuild.sh`  
+Run  `./setup.sh`  
+Note: Make sure not to run it as root, the script will ask for sudo 
 Run `./fetchandbuild.sh`  
 
 You show now have a ~/chromiumos directory.
