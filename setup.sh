@@ -7,7 +7,7 @@ pythonnumber=$(python3 --version | sed 's/Python //g')
 function setup() {
 	if awk 'BEGIN{exit ARGV[1]>ARGV[2]}' "$pythonnumber" "3.8"; then
 		sudo apt update && sudo apt upgrade -y
-		sudo add-apt-repository universe
+		sudo add-apt-repository universe -y
 		sudo apt-get install git gitk git-gui curl
 		cd ~ && git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
 		echo 'export PATH=/home/user/depot_tools:$PATH' >> ~/.bashrc
